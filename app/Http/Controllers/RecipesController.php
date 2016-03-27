@@ -10,6 +10,10 @@ use Recipes\Recipe;
 
 use Recipes\Ingredient;
 
+use Recipes\Http\Requests\CreateRecipeRequest;
+
+use Recipes\Http\Requests\EditRecipeRequest;
+
 use Session;
 
 use Redirect;
@@ -49,7 +53,7 @@ class RecipesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRecipeRequest $request)
     {
          if ( ! $request->has('ingredient_list')){
             $recipe->ingredients()->detach();
@@ -122,7 +126,7 @@ class RecipesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditRecipeRequest $request, $id)
     {
         
         $recipe = Recipe::find($id);

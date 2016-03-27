@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>index</title>
-
-        {!!Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')!!}
-        {!!Html::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')!!}
- 		{!!Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')!!}	      
-    </head>
-
-    <body>
-							
-
-		<div class="container">
-			
-    	    <div class="content">
+@extends('master')
+@section('title', 'Show')
+@section('content')
     	       <h1>{{$recipe->title}}</h1>
     	    	<table class="table">
 
@@ -31,20 +18,14 @@
 		
 		<td>{{$recipe->ingredients()->get()->implode('name',', ')}}</td>
 		<td>{{$recipe->description}}<td>
-		<td>{!!link_to_route('recipes.edit', $title = 'Edit', $parameters = $recipe->id, $attributes = ['class'=>'btn btn-primary'])!!}</td>			
+		<td>{!!link_to_route('recipes.edit', $title = 'Edit', $parameters = $recipe->id, $attributes = ['class'=>'btn btn-warning'])!!}</td>			
 
 	
 					</tbody>
 	
-				
+@stop				
 	    
-				 						
-			</div>
-		</div>		
-		{!!Html::script('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')!!}
-
-        {!!Html::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')!!}
-
+@section('script')	
         <script type = "text/javascript">
  		  $(function(){
     	  $(".close").click(function(){
@@ -52,7 +33,4 @@
       				});
  					  });  
 		</script>   
-
-	</body>
-			
-</html>
+@stop

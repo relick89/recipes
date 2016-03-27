@@ -21,7 +21,7 @@ Route::get('test', function(){
 
 Route::get('controller','TestController@index');
 
-Route::resource('recipes','RecipesController');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +35,5 @@ Route::resource('recipes','RecipesController');
 */
 
 Route::group(['middleware' => ['web']], function () {
-    
+    Route::resource('recipes','RecipesController');
 });

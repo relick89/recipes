@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>create</title>
-
-        {!!Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')!!}
-        {!!Html::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')!!}
-        {!!Html::style('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css')!!}
-        {!!Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')!!}
-        
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
+@extends('master')
+@section('title', 'Show')
+@section('content')
                 
+                @include('alerts.request')
+
                 {!!Form::open(['route'=>'recipes.store', 'method'=>'POST'])!!}
               <!!  input type="hidden" name="_token" value="{!! csrf_token() !!}" !!> 
                 <div class ="form-group">
@@ -29,25 +20,13 @@
                     {!!Form::label('description: ')!!}
                     {!!Form::text('description',null,['class'=>'form-control', 'placeholder'=>'Insert description'])!!}
                 </div>
-                {!!Form::submit('save',['class'=>'btn btn_primary'])!!}    
+                {!!Form::submit('save',['class'=>'btn btn-primary'])!!}    
 
                 {!!Form::close()!!}                
-                
+@stop
 
-
-            </div>
-
-            
-
-        </div>
-
-
-        {!!Html::script('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')!!}
-
-        {!!Html::script('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js')!!}
+@section('script')                
         
-        {!!Html::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')!!}
-
         <script type="text/javascript">
                  $('#ingredient_list').select2({
                     placeholder: 'Scegliere o aggiungere gli ingredienti' ,
@@ -61,7 +40,4 @@
                    }
                 });
             </script>
-
-
-    </body>
-</html>
+@stop
