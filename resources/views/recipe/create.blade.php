@@ -6,7 +6,7 @@
         {!!Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')!!}
         {!!Html::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')!!}
         {!!Html::style('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css')!!}
-
+        {!!Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')!!}
         
     </head>
     <body>
@@ -14,7 +14,7 @@
             <div class="content">
                 
                 {!!Form::open(['route'=>'recipes.store', 'method'=>'POST'])!!}
-
+              <!!  input type="hidden" name="_token" value="{!! csrf_token() !!}" !!> 
                 <div class ="form-group">
                     {!!Form::label('title: ')!!}
                     {!!Form::text('title',null,['class'=>'form-control', 'placeholder'=>'Insert title'])!!}

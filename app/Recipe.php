@@ -12,8 +12,12 @@ class Recipe extends Model
 
     public function ingredients()
     {
-    	return $this->belongsToMany('Recipes\Ingredient', 'ingredient_recipe', 'ingredient_id', 'recipe_id');
+    	return $this->belongsToMany('Recipes\Ingredient');
     }
 
- 
+ 	public function getIngredientListAttribute()
+    {
+        return $this->ingredients->lists('id')->all();
+        
+    }
 }

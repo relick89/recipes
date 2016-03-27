@@ -10,6 +10,6 @@ class Ingredient extends Model
 
     public function recipes()
     {
-    	return $this->belongsToMany('Recipes\Recipe', 'ingredient_recipe','ingredient_id', 'recipe_id')->withTimestamps();
+    	return $this->belongsToMany('Recipes\Recipe')->withTimestamps();
     }
 }

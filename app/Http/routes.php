@@ -22,6 +22,7 @@ Route::get('test', function(){
 Route::get('controller','TestController@index');
 
 Route::resource('recipes','RecipesController');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -34,5 +35,5 @@ Route::resource('recipes','RecipesController');
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    
 });

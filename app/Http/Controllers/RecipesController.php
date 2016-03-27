@@ -10,6 +10,9 @@ use Recipes\Recipe;
 
 use Recipes\Ingredient;
 
+use Session;
+
+use Redirect;
 
 
 
@@ -23,7 +26,9 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        //
+        $recipes= Recipe::with('ingredients')->orderBy('created_at', 'DESC')->paginate(10);
+        return view ('recipe.index' , compact('recipes'));
+
     }
 
     /**
@@ -33,7 +38,7 @@ class RecipesController extends Controller
      */
     public function create()
     {
-        $ingredients = \Recipes\Ingredient::lists('name', 'id');
+        $ingredients = Ingredient::lists('name', 'id');
 
         return view('recipe.create', compact('ingredients'));
     }
@@ -54,7 +59,7 @@ class RecipesController extends Controller
         $ingredients = array();
         foreach ($request->ingredient_list as $ingId){
             if (substr($ingId, 0, 4) == 'new:'){
-                $newIng = \Recipes\Ingredient::create(['name' => substr($ingId, 4)]);
+                $newIng = Ingredient::create(['name' => substr($ingId, 4)]);
                 $ingredients[] = $newIng->id;
                 continue;
             }
@@ -62,7 +67,7 @@ class RecipesController extends Controller
         } 
 
 
-        $recipe= \Recipes\Recipe::create([
+        $recipe= Recipe::create([
             'title' => $request['title'],
             'description' => $request['description'],
 
@@ -79,8 +84,9 @@ class RecipesController extends Controller
              ]);
     
         }
-    */    
-        return "Ricetta inserita";
+    */   
+
+        return redirect('/recipes');//->with('success','Ricetta creata con successo');
     }
 
     /**
@@ -91,7 +97,9 @@ class RecipesController extends Controller
      */
     public function show($id)
     {
-        //
+        $ingredients = Ingredient::lists('name', 'id');  
+        $recipe = Recipe::find($id);
+        return view('recipe.show', compact('recipe','ingredients'));
     }
 
     /**
@@ -102,7 +110,9 @@ class RecipesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ingredients = Ingredient::lists('name', 'id');  
+        $recipe = Recipe::find($id);
+        return view('recipe.edit', compact('recipe','ingredients'));
     }
 
     /**
@@ -114,7 +124,33 @@ class RecipesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $recipe = Recipe::find($id);
+        
+        if ( ! $request->has('ingredient_list')){
+            $recipe->ingredients()->detach();
+            return;
+        }
+        
+        $ingredients = array();
+        foreach ($request->ingredient_list as $ingId){
+            if (substr($ingId, 0, 4) == 'new:'){
+                $newIng = Ingredient::create(['name' => substr($ingId, 4)]);
+                $ingredients[] = $newIng->id;
+                continue;
+            }
+            $ingredients[] = $ingId;
+        } 
+
+
+        $recipe -> title = $request->get('title');
+        $recipe -> description = $request->get('description');
+
+        $recipe -> save();
+        $recipe->ingredients()->sync($ingredients);
+
+        return redirect('/recipes');
+
     }
 
     /**
@@ -125,6 +161,7 @@ class RecipesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Recipe::destroy($id);
+        return redirect('/recipes');
     }
 }
