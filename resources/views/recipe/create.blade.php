@@ -1,5 +1,5 @@
-@extends('master')
-@section('title', 'Show')
+@extends('layouts.app')
+@section('title', 'Add Recipe')
 @section('content')
                 
                 @include('alerts.request')

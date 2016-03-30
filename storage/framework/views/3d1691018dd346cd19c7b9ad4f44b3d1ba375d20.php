@@ -1,18 +1,7 @@
-<?php $__env->startSection('title', 'Show'); ?>
+<?php $__env->startSection('title', 'Add Recipe'); ?>
 <?php $__env->startSection('content'); ?>
                 
-                <?php if(count($errors) > 0): ?>
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <ul>
-                        <?php foreach($errors->all() as $error): ?>
-                            <li><?php echo $error; ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-                <?php endif; ?>
+                <?php echo $__env->make('alerts.request', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
                 <?php echo Form::open(['route'=>'recipes.store', 'method'=>'POST']); ?>
 
@@ -58,4 +47,4 @@
                 });
             </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

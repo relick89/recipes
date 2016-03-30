@@ -8,7 +8,12 @@ class Recipe extends Model
 {
     protected $table = "recipes";
 
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'user_id'];
+
+    public function user() 
+    { 
+    	return $this->belongsTo('Recipes\User','user_id'); 
+    }
 
     public function ingredients()
     {

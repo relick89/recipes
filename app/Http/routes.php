@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('test', function(){
 	return "hello from routes";
@@ -34,6 +32,21 @@ Route::get('controller','TestController@index');
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+
+    Route::get('usercontrol',[
+    'middleware' => 'auth','uses'=>'Usercontroller@userRecipe']);
+
     Route::resource('recipes','RecipesController');
+
+    
+
+    Route::get('/', function () {
+    return view('welcome');
+    });
+    
+
 });

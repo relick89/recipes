@@ -18,11 +18,18 @@ use Session;
 
 use Redirect;
 
+use Auth;
+
 
 
 
 class RecipesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -70,11 +77,12 @@ class RecipesController extends Controller
             $ingredients[] = $ingId;
         } 
 
+        $userid = Auth::user()->id;
 
         $recipe= Recipe::create([
             'title' => $request['title'],
             'description' => $request['description'],
-
+            'user_id'=>$userid
             ]);
         $recipe->ingredients()->attach($ingredients);
         
@@ -146,10 +154,11 @@ class RecipesController extends Controller
             $ingredients[] = $ingId;
         } 
 
+        $userid = Auth::user()->id;
 
         $recipe -> title = $request->get('title');
         $recipe -> description = $request->get('description');
-
+        $recipe -> user_id = $userid;
         $recipe -> save();
         $recipe->ingredients()->sync($ingredients);
 
@@ -168,4 +177,8 @@ class RecipesController extends Controller
         Recipe::destroy($id);
         return redirect('/recipes');
     }
+    
+
+    
+
 }
