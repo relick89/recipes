@@ -50,7 +50,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/recipes') }}">Home</a></li>
                     <li><a href="{{ url('/recipes/create') }}">Add Recipe</a></li>
-                    <li><a href="{{ url('/userRecipe') }}">My Recipes</a></li>
+                    <li><a href="{{ url('/recipes/userRecipe') }}">My Recipes</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

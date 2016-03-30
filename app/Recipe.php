@@ -25,4 +25,5 @@ class Recipe extends Model
         return $this->ingredients->lists('id')->all();
         
     }
+
 }

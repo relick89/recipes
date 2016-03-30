@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-                <h1>Ricette</h1>
+@extends('layouts.app')
+@section('title', 'UserRecipes')
+@section('content')
+               <h1>Le ricette di {{ Auth::user()->name }} </h1>
 
     	    	<table class="table">
 
@@ -11,8 +9,7 @@
     	    			<th>Titolo</th>
     	    			<th>Ingredienti</th>
     	    			<th>Descrizione</th>
-    	    			<th>Azioni</th>
-                        <th>Azioni</th>
+                        <th></th>
     	    		</thead>
     	    		
 @foreach($recipes as $recipe)
@@ -22,13 +19,12 @@
 		<td>{{$recipe->title}}</td>
 		<td>{{$recipe->ingredients()->get()->implode('name',', ')}}</td>
 		<td>{{$recipe->description}}<td>
-        <td>{{$recipe->user_id}}<td>    
+        <td>{!!link_to_route('recipes.edit', $title = 'Edit', $parameters = $recipe->id, $attributes = ['class'=>'btn btn-warning'])!!}</td>            
+        <td>{!!link_to_route('recipes.show', $title = 'Show', $parameters = $recipe->id, $attributes = ['class'=>'btn btn-info'])!!}</td>            
+       
 		  
 	
 					</tbody>
 @endforeach	
 				
-	    
-</body>
-
-</html>
+@stop	    

@@ -37,8 +37,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 
-    Route::get('usercontrol',[
-    'middleware' => 'auth','uses'=>'Usercontroller@userRecipe']);
+    Route::get('/recipes/userRecipe',[
+    'middleware' => 'auth','uses'=>'UserController@userRecipe']);
 
     Route::resource('recipes','RecipesController');
 

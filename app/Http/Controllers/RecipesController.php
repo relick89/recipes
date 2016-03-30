@@ -20,6 +20,8 @@ use Redirect;
 
 use Auth;
 
+use Recipes\User;
+
 
 
 
@@ -28,7 +30,7 @@ class RecipesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['only' => ['create','edit']]);
     }
     /**
      * Display a listing of the resource.
@@ -36,8 +38,9 @@ class RecipesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $recipes= Recipe::with('ingredients')->orderBy('created_at', 'DESC')->paginate(10);
+    {   
+        $recipes= Recipe::with('ingredients','users')->orderBy('created_at', 'DESC')->paginate(10);
+        
         return view ('recipe.index' , compact('recipes'));
 
     }

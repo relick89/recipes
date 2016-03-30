@@ -19,13 +19,13 @@ use Redirect;
 use Auth;
 
 
-class Usercontroller extends Controller
+class UserController extends Controller
 {
     public function userRecipe($id=null)
     {
         $id = Auth::id();
         $ingredients = Ingredient::lists('name', 'id');  
-        $recipes = Recipe::find($id);
+        $recipes = Recipe::where("user_id", "=", $id)->get();
         return view('userRecipe', compact('recipes','ingredients'));
     }
 }
