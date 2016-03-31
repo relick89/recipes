@@ -18,8 +18,8 @@
 
 		
 		<td>{{$recipe->ingredients()->get()->implode('name',', ')}}</td>
-		<td>{{$recipe->description}}<td>
-        <td><td>    
+		<td>{{$recipe->description}}</td>
+        <td>{{$recipe->user->name}}</td>    
 		<td>{!!link_to_route('recipes.edit', $title = 'Edit', $parameters = $recipe->id, $attributes = ['class'=>'btn btn-warning'])!!}</td>			
 
 	

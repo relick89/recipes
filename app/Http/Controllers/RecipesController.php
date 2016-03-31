@@ -39,7 +39,7 @@ class RecipesController extends Controller
      */
     public function index()
     {   
-        $recipes= Recipe::with('ingredients','users')->orderBy('created_at', 'DESC')->paginate(10);
+        $recipes= Recipe::with('ingredients','user')->orderBy('created_at', 'DESC')->paginate(10);
         
         return view ('recipe.index' , compact('recipes'));
 

@@ -12,7 +12,7 @@ class Recipe extends Model
 
     public function user() 
     { 
-    	return $this->belongsTo('Recipes\User','user_id'); 
+    	return $this->belongsTo('Recipes\User'); 
     }
 
     public function ingredients()
