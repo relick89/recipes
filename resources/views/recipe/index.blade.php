@@ -30,8 +30,9 @@
 		<td>{{$recipe->description}}</td>
         <td>{{$recipe->user->name}}</td>     
         <td>{!!link_to_route('recipes.show', $title = 'Show', $parameters = $recipe->id, $attributes = ['class'=>'btn btn-info'])!!}</td>            
-	
-					</tbody>
+        
+
+        </tbody>
 @endforeach	
 		
 	    

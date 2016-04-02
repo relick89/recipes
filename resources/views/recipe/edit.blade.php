@@ -24,12 +24,6 @@
                 {!!Form::submit('Edit',['class'=>'btn btn-warning'])!!}    
 
                 {!!Form::close()!!}                
-                <div>
-                {!!Form::open(['route'=>['recipes.destroy', $recipe->id], 'method'=>'DELETE'])!!}
-                {!!Form::submit('Delete',['class'=>'btn btn-danger'])!!}    
-
-                {!!Form::close()!!} 
-                </div>
             
 @stop
 @section('script')

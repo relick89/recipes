@@ -89,17 +89,7 @@ class RecipesController extends Controller
             ]);
         $recipe->ingredients()->attach($ingredients);
         
-
-
-    /*    foreach ($request -> ingredient as $ingr) {
-    
-        $ingrId= \Recipes\Ingredient::where('ingredient', '=',$ingr['ingredient'])->first();
-        $pivotTb= \Recipes\Ingredient_Recipe::create([
-            'recipe_id'=>$recipe->id,'ingredient_id'=>$ingrId->id
-             ]);
-    
-        }
-    */   
+   
 
         return redirect('/recipes');//->with('success','Ricetta creata con successo');
     }
@@ -114,6 +104,7 @@ class RecipesController extends Controller
     {
         $ingredients = Ingredient::lists('name', 'id');  
         $recipe = Recipe::find($id);
+        
         return view('recipe.show', compact('recipe','ingredients'));
     }
 
@@ -127,6 +118,7 @@ class RecipesController extends Controller
     {
         $ingredients = Ingredient::lists('name', 'id');  
         $recipe = Recipe::find($id);
+        
         return view('recipe.edit', compact('recipe','ingredients'));
     }
 

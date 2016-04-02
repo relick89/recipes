@@ -40,7 +40,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/recipes') }}">
                     Recipes
                 </a>
             </div>
@@ -48,11 +48,13 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/recipes') }}">Home</a></li>
                     <li><a href="{{ url('/recipes/create') }}">Add Recipe</a></li>
                     <li><a href="{{ url('/recipes/userRecipe') }}">My Recipes</a></li>
+                    <li>{!! Form::open(['url'=>'/recipes/find', 'method'=>'post', 'id'=>'find', 'class'=>'form-inline','style'=>'padding-top:7px; float:left;']) !!}
+                        {!! Form::text('find',null,['class'=>'form-control','placeholder'=>'Cerca..','id'=>'findIngredient']) !!}
+                        {!! Form::button('',['class'=>'fa fa-search searchButton','type'=>'submit']) !!}
+                        {!! Form::close() !!}</li>
                 </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->

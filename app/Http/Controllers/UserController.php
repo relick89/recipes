@@ -2,8 +2,6 @@
 
 namespace Recipes\Http\Controllers;
 
-namespace Recipes\Http\Controllers;
-
 use Illuminate\Http\Request;
 
 use Recipes\Http\Requests;

@@ -40,9 +40,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/recipes/userRecipe',[
     'middleware' => 'auth','uses'=>'UserController@userRecipe']);
 
+    Route::post('/recipes/find','IngredientController@find');
+    
     Route::resource('recipes','RecipesController');
 
-    
+    Route::resource('admin','AdminController');
 
     Route::get('/', function () {
     return view('welcome');

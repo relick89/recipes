@@ -8,7 +8,7 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    Per visitare il sito <a href="{{ url('/recipes') }}">clicca qui</a>
                 </div>
             </div>
         </div>
