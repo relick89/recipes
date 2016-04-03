@@ -24,7 +24,8 @@ class AdminController extends Controller
 {
    public function __construct()
    {
-    $this->middleware('admin');
+    $this->middleware('auth');
+    $this->middleware('isadmin');
    }
     /**
      * Display a listing of the resource.
@@ -128,11 +129,8 @@ class AdminController extends Controller
             $ingredients[] = $ingId;
         } 
 
-        $userid = Auth::user()->id;
-
         $recipe -> title = $request->get('title');
         $recipe -> description = $request->get('description');
-        $recipe -> user_id = $userid;
         $recipe -> save();
         $recipe->ingredients()->sync($ingredients);
 
@@ -158,6 +156,28 @@ class AdminController extends Controller
         }
         User::destroy($id);
         return redirect('/admin/showUsers');
+    }
+
+    public function destroyRecipes($id)
+    {
+        Recipe::destroy($id);
+            
+        return redirect('/admin');
+    }
+
+
+    public function showIngredients()
+    {
+        $ingredients= Ingredient::all();
+        
+        return view ('admin.showIngredients', compact('ingredients'));
+    }
+
+    public function destroyIngredient($id)
+    {
+        Ingredient::destroy($id);
+            
+        return redirect('/admin/showIngredients');
     }
 
         

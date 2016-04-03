@@ -22,6 +22,7 @@
                         <td>{{$recipe->user->name}}</td>
                         
 					</tbody>
+                </table>
 	
 @stop				
 	    

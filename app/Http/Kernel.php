@@ -29,6 +29,7 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \Recipes\Http\Middleware\VerifyCsrfToken::class,
+
         ],
 
         'api' => [
@@ -48,6 +49,6 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \Recipes\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'admin' => \Recipes\Http\Middleware\Admin::class,
+        'isadmin' => \Recipes\Http\Middleware\Isadmin::class,
     ];
 }

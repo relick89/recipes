@@ -31,7 +31,7 @@
                     <div class ="form-group">
                         <?php echo Form::label('description: '); ?>
 
-                        <?php echo Form::text('description',null,['class'=>'form-control', 'placeholder'=>'Insert description']); ?>
+                        <?php echo Form::textarea('description',null,['class'=>'form-control', 'placeholder'=>'Insert description']); ?>
 
                     </div>
                     <?php echo Form::submit('save',['class'=>'btn btn-primary']); ?>    

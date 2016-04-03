@@ -39,7 +39,7 @@ class RecipesController extends Controller
      */
     public function index()
     {   
-        $recipes= Recipe::with('ingredients','user')->orderBy('created_at', 'DESC')->paginate(10);
+        $recipes= Recipe::with('ingredients','user')->orderBy('created_at', 'DESC')->paginate(5);
         
         return view ('recipe.index' , compact('recipes'));
 
@@ -149,11 +149,8 @@ class RecipesController extends Controller
             $ingredients[] = $ingId;
         } 
 
-        $userid = Auth::user()->id;
-
         $recipe -> title = $request->get('title');
         $recipe -> description = $request->get('description');
-        $recipe -> user_id = $userid;
         $recipe -> save();
         $recipe->ingredients()->sync($ingredients);
 

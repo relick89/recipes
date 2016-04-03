@@ -10,15 +10,15 @@
     		    {{ session('success') }}
   			</div>
 		@endif
-
+            <div class=" col-md-10 col-md-offset-1">
     	    	<table class="table">
 
     	    		<thead>
-    	    			<th>Titolo</th>
-    	    			<th>Ingredienti</th>
-    	    			<th>Descrizione</th>
-                        <th>Autore</th>
-    	    			<th></th>
+    	    			<th class="col-md-2">Titolo</th>
+    	    			<th class="col-md-3">Ingredienti</th>
+    	    			<th class="col-md-5">Descrizione</th>
+                        <th class="col-md-1">Autore</th>
+    	    			<th class="col-md-1"></th>
     	    		</thead>
     	    		
                     @foreach($recipes as $recipe)
@@ -26,12 +26,14 @@
 	
                 		<td>{{$recipe->title}}</td>
                 		<td>{{$recipe->ingredients()->get()->implode('name',', ')}}</td>
-                		<td>{{$recipe->description}}</td>
+                		<td>{{substr($recipe->description,0,200)}}...</td>
                         <td>{{$recipe->user->name}}</td>     
                         <td>{!!link_to_route('admin.show', $title = 'Show', $parameters = $recipe->id, $attributes = ['class'=>'btn btn-info'])!!}</td>                           
-
+                        
                     </tbody>
-                    @endforeach	
+                    @endforeach
+                </table>
+            </div>	
 		
 @stop	
 @section('script')		

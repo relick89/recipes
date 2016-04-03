@@ -30,8 +30,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $loginPath = '/admin';
-    protected $redirectPath = '/admin';
+    protected $redirectTo = '/admin';
     protected $redirectAfterLogout = '/recipes';
 
     /**

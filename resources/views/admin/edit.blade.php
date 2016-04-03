@@ -4,7 +4,7 @@
                  
                 @include('alerts.request')
 
-                {!!Form::model($recipe, ['route'=>['recipes.update', $recipe->id], 'method'=>'PUT'])!!}
+                {!!Form::model($recipe, ['route'=>['admin.update', $recipe->id], 'method'=>'PUT'])!!}
                  
              
                 <div class ="form-group">
@@ -26,7 +26,7 @@
                     {!!Form::close()!!}                
                 </div>
                 <div class ="form-group">
-                    {!!Form::open(['route'=>['recipes.destroy', $recipe->id], 'method'=>'DELETE'])!!}    
+                    {!!Form::open(['route'=>['admin.destroyRecipes', $recipe->id], 'method'=>'DELETE'])!!}    
                     {!!Form::submit('Delete',['class'=>'btn btn-danger'])!!}    
                     {!!Form::close()!!}                
                 </div>

@@ -32,13 +32,10 @@ Route::get('controller','TestController@index');
 |
 */
 
+
 Route::group(['middleware' => ['web']], function () {
-    Route::auth();
-});
+   Route::auth();
 
-
-
-Route::group(['middleware' => ['web','auth']], function () {
     Route::get('/home', 'HomeController@index');
 
     Route::get('/recipes/userRecipe',[
@@ -50,14 +47,14 @@ Route::group(['middleware' => ['web','auth']], function () {
 
     Route::get('/', function () { return view('welcome'); });
     
-   
 
-
-	Route::group(['middleware' => 'admin'], function () {
+	Route::group(['middleware' => 'isadmin'], function () {
 
 	 	Route::get('/admin/showUsers', array('as' => 'admin.showUsers', 'uses' => 'AdminController@showUsers'));    
-
-     	Route::resource('admin','AdminController');
+        Route::get('/admin/showIngredients', array('as' => 'admin.showIngredients', 'uses' => 'AdminController@showIngredients'));
+     	Route::delete('/admin/showIngredients/{id}', array('as' => 'admin.destroyIngredient', 'uses' => 'AdminController@destroyIngredient'));
+        Route::delete('/admin/show/{id}', array('as' => 'admin.destroyRecipes', 'uses' => 'AdminController@destroyRecipes'));
+        Route::resource('admin','AdminController');
 
 });        
 
