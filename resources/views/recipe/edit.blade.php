@@ -21,10 +21,15 @@
                     {!!Form::label('description: ')!!}
                     {!!Form::text('description',null,['class'=>'form-control', 'placeholder'=>'Insert description'])!!}
                 </div>
-                {!!Form::submit('Edit',['class'=>'btn btn-warning'])!!}    
-
-                {!!Form::close()!!}                
-            
+                <div class ="form-group">
+                    {!!Form::submit('Edit',['class'=>'btn btn-warning'])!!}    
+                    {!!Form::close()!!}                
+                </div>
+                <div class ="form-group">
+                    {!!Form::open(['route'=>['recipes.destroy', $recipe->id], 'method'=>'DELETE'])!!}    
+                    {!!Form::submit('Delete',['class'=>'btn btn-danger'])!!}    
+                    {!!Form::close()!!}                
+                </div>
 @stop
 @section('script')
       

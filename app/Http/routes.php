@@ -32,9 +32,13 @@ Route::get('controller','TestController@index');
 |
 */
 
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => ['web']], function () {
     Route::auth();
+});
 
+
+
+Route::group(['middleware' => ['web','auth']], function () {
     Route::get('/home', 'HomeController@index');
 
     Route::get('/recipes/userRecipe',[
@@ -44,11 +48,17 @@ Route::group(['middleware' => 'web'], function () {
     
     Route::resource('recipes','RecipesController');
 
-    Route::resource('admin','AdminController');
-
-    Route::get('/', function () {
-    return view('welcome');
-    });
+    Route::get('/', function () { return view('welcome'); });
     
+   
+
+
+	Route::group(['middleware' => 'admin'], function () {
+
+	 	Route::get('/admin/showUsers', array('as' => 'admin.showUsers', 'uses' => 'AdminController@showUsers'));    
+
+     	Route::resource('admin','AdminController');
+
+});        
 
 });

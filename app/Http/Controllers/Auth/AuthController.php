@@ -30,7 +30,8 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/recipes';
+    protected $loginPath = '/admin';
+    protected $redirectPath = '/admin';
     protected $redirectAfterLogout = '/recipes';
 
     /**
@@ -41,6 +42,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+
     }
 
     /**
