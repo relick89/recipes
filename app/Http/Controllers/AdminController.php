@@ -34,7 +34,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $recipes= Recipe::with('ingredients','user')->orderBy('created_at', 'DESC')->paginate(5);
+        $recipes= Recipe::with('ingredients','user')->orderBy('created_at', 'DESC')->paginate(4);
         
         return view ('admin.showRecipes' , compact('recipes'));
 
@@ -132,7 +132,7 @@ class AdminController extends Controller
         $recipe -> title = $request->get('title');
         $recipe -> description = $request->get('description');
         $recipe -> save();
-        $recipe->ingredients()->sync($ingredients);
+        $recipe -> ingredients()->sync($ingredients);
 
         return redirect('/admin');
 

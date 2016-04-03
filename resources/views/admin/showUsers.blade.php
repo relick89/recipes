@@ -29,7 +29,9 @@
                             {!!Form::close()!!}</td>     
                         
                     </tbody>
-                    @endforeach	
+                    @endforeach
+                </table>
+                
 		
 @stop	
 @section('script')		

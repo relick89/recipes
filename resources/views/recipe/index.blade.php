@@ -32,7 +32,8 @@
             
             </tbody>
             @endforeach	
-        </table>		
+        </table>
+        <center>{!!$recipes->render()!!}</center>		
 	    
 @stop	
 @section('script')		

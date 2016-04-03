@@ -33,6 +33,7 @@
                     </tbody>
                     @endforeach
                 </table>
+            <center>{!!$recipes->render()!!}</center>
             </div>	
 		
 @stop	

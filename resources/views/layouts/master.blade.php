@@ -51,10 +51,6 @@
                     <li><a href="{{ url('/admin/showUsers') }}">All Users</a></li>
                     <li><a href="{{ url('/admin/create') }}">Create Users</a></li>
                     <li><a href="{{ url('/admin/showIngredients') }}">All ingredients</a></li>
-                    <li>{!! Form::open(['url'=>'/recipes/find', 'method'=>'post', 'id'=>'find', 'class'=>'form-inline','style'=>'padding-top:7px; float:left;']) !!}
-                        {!! Form::text('find',null,['class'=>'form-control','placeholder'=>'Cerca..','id'=>'findIngredient']) !!}
-                        {!! Form::button('',['class'=>'fa fa-search searchButton','type'=>'submit']) !!}
-                        {!! Form::close() !!}</li>
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
