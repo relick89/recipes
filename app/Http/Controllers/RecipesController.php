@@ -91,7 +91,7 @@ class RecipesController extends Controller
         
    
 
-        return redirect('/recipes');//->with('success','Ricetta creata con successo');
+        return redirect('/recipes')->with('success','Ricetta creata con successo');
     }
 
     /**
@@ -154,7 +154,7 @@ class RecipesController extends Controller
         $recipe -> save();
         $recipe->ingredients()->sync($ingredients);
 
-        return redirect('/recipes');
+        return redirect('/recipes')->with('success','Ricetta modificata con successo');
 
     }
 
@@ -167,7 +167,7 @@ class RecipesController extends Controller
     public function destroy($id)
     {
         Recipe::destroy($id);
-        return redirect('/recipes');
+        return redirect('/recipes')->with('success','Ricetta cancellata con successo');
     }
     
 

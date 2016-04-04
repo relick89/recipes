@@ -5,11 +5,7 @@
 							
 @section('content')
     	
-    	@if (session('success'))
-    		<div class="alert alert-success">
-    		    {{ session('success') }}
-  			</div>
-		@endif
+    	@include('alerts.success')
 
     	<table class="table">
 
@@ -36,13 +32,5 @@
         <center>{!!$recipes->render()!!}</center>		
 	    
 @stop	
-@section('script')		
-        <script type = "text/javascript">
- 		  $(function(){
-    	  $(".close").click(function(){
-         $("#myAlert").alert('close');
-      				});
- 					  });  
-		</script>   
-@stop
+
 	

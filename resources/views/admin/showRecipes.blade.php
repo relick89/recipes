@@ -37,13 +37,5 @@
             </div>	
 		
 @stop	
-@section('script')		
-        <script type = "text/javascript">
- 		  $(function(){
-    	  $(".close").click(function(){
-         $("#myAlert").alert('close');
-      				});
- 					  });  
-		</script>   
-@stop
+
 	

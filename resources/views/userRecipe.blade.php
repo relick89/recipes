@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'UserRecipes')
 @section('content')
+@include('alerts.success')
                <h1>Le ricette di {{ Auth::user()->name }} </h1>
 
     	    	<table class="table">

@@ -16,6 +16,8 @@ use Hash;
 
 use Auth;
 
+use Recipes\Http\Requests\CreateUserRequest;
+
 use Illuminate\Support\Facades\Input as input;
 
 use Recipes\Http\Requests\EditRecipeRequest;
@@ -56,7 +58,7 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
         $user = new User;
 
@@ -65,7 +67,7 @@ class AdminController extends Controller
         $user -> password = Hash::make(Input::get('password'));
         $user -> isAdmin = $request->get('isAdmin');
         $user -> save();
-        return redirect('/admin/showUsers');
+        return redirect('/admin/showUsers')->with('success','Utente creato con successo');;
     }
 
     public function showUsers()
@@ -134,7 +136,7 @@ class AdminController extends Controller
         $recipe -> save();
         $recipe -> ingredients()->sync($ingredients);
 
-        return redirect('/admin');
+        return redirect('/admin')->with('success','Ricetta modificata con successo');;
 
     }
 
@@ -155,14 +157,14 @@ class AdminController extends Controller
             }
         }
         User::destroy($id);
-        return redirect('/admin/showUsers');
+        return redirect('/admin/showUsers')->with('success','Utente cancellato con successo');;
     }
 
     public function destroyRecipes($id)
     {
         Recipe::destroy($id);
             
-        return redirect('/admin');
+        return redirect('/admin')->with('success','Ricetta cancellata con successo');;
     }
 
 
@@ -177,7 +179,7 @@ class AdminController extends Controller
     {
         Ingredient::destroy($id);
             
-        return redirect('/admin/showIngredients');
+        return redirect('/admin/showIngredients')->with('success','Ingrediente cancellato con successo');;
     }
 
         
