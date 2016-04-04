@@ -16,7 +16,7 @@
     	    		<thead>
     	    			<th>Nome</th>
     	    			<th>Email</th>
-    	    			<th>Ricette</th>
+    	    			
     	    		</thead>
     	    		
                     @foreach($users as $user)
@@ -34,12 +34,3 @@
                 
 		
 @stop	
-@section('script')		
-        <script type = "text/javascript">
- 		  $(function(){
-    	  $(".close").click(function(){
-         $("#myAlert").alert('close');
-      				});
- 					  });  
-		</script>   
-@stop

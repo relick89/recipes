@@ -11,7 +11,7 @@
 |
 */
 
-
+/*test routes*/
 
 Route::get('test', function(){
 	return "hello from routes";

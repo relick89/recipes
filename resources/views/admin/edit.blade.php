@@ -19,7 +19,7 @@
 
                 <div class ="form-group">
                     {!!Form::label('description: ')!!}
-                    {!!Form::text('description',null,['class'=>'form-control', 'placeholder'=>'Insert description'])!!}
+                    {!!Form::textarea('description',null,['class'=>'form-control', 'placeholder'=>'Insert description'])!!}
                 </div>
                 <div class ="form-group">
                     {!!Form::submit('Edit',['class'=>'btn btn-warning'])!!}    
