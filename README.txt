@@ -1,7 +1,11 @@
 1-$Composer Update o in caso di problemi $Sudo Composer Update (sudo risolve sempre tutto :))
+
 2-Modifica il file .env
+
 3-$ php config:cache (se da errore sqlstate[28000])
+
 4-$ php artisan migrate
+
 5-$ php artisan db:seed 
 
 l'utente admin è: admin@admin.com 
